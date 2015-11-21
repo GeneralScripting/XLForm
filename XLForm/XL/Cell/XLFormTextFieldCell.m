@@ -278,7 +278,7 @@ NSString *const XLFormTextFieldLengthPercentage = @"textFieldLengthPercentage";
 - (void)textFieldDidChange:(UITextField *)textField{
     if([self.textField.text length] > 0) {
         if ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeNumber] || [self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeDecimal]){
-            self.rowDescriptor.value =  @([self.textField.text doubleValue]);
+            self.rowDescriptor.value = [[self.textField.text stringByReplacingOccurencesOfString:@”,” withString:@”.”] doublevalue];
         } else if ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeInteger]){
             self.rowDescriptor.value = @([self.textField.text integerValue]);
         } else {
